@@ -14,7 +14,6 @@ export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const playerRef = useRef<any>(null);
-  const checkIntervalRef = useRef<any>(null);
 
   const videoId = invite.youtubeTrackId || "MbLpZXIZZOg";
 
@@ -40,7 +39,6 @@ export default function AudioPlayer() {
           loop: 1,
           playlist: videoId,
           start: 0,
-          end: 45,
           playsinline: 1,
           rel: 0,
           enablejsapi: 1,
@@ -59,9 +57,11 @@ export default function AudioPlayer() {
               setIsPlaying(true);
             } else if (window.YT && (event.data === window.YT.PlayerState.ENDED || event.data === window.YT.PlayerState.PAUSED)) {
               if (event.data === window.YT.PlayerState.ENDED) {
-                // Loop back to 0s
+                // Loop back to start when full song ends
                 event.target.seekTo(0);
                 event.target.playVideo();
+              } else if (event.data === window.YT.PlayerState.PAUSED) {
+                setIsPlaying(false);
               }
             }
           },
@@ -75,18 +75,7 @@ export default function AudioPlayer() {
       window.onYouTubeIframeAPIReady = () => initPlayer();
     }
 
-    // 2. Loop Enforcer: Check playback time every 450ms and loop at 45s
-    checkIntervalRef.current = setInterval(() => {
-      if (playerRef.current && typeof playerRef.current.getCurrentTime === "function") {
-        const currentTime = playerRef.current.getCurrentTime();
-        if (currentTime >= 44.5) {
-          playerRef.current.seekTo(0);
-          playerRef.current.playVideo();
-        }
-      }
-    }, 450);
-
-    // 3. User interaction listener to start BGM on first tap/click anywhere on page
+    // 2. User interaction listener to start BGM on first tap/click anywhere on page
     const handleFirstUserInteraction = () => {
       if (playerRef.current && typeof playerRef.current.playVideo === "function") {
         try {
@@ -104,7 +93,6 @@ export default function AudioPlayer() {
     window.addEventListener("scroll", handleFirstUserInteraction, { once: true });
 
     return () => {
-      if (checkIntervalRef.current) clearInterval(checkIntervalRef.current);
       window.removeEventListener("click", handleFirstUserInteraction);
       window.removeEventListener("touchstart", handleFirstUserInteraction);
       window.removeEventListener("scroll", handleFirstUserInteraction);
@@ -180,11 +168,11 @@ export default function AudioPlayer() {
                   </span>
                   <span className="flex items-center gap-1 font-caps text-[9px] text-[#f7e8d0]/80">
                     <RefreshCw size={10} className="animate-spin" />
-                    0-45s Loop
+                    Full Track
                   </span>
                 </div>
                 <p className="font-sans text-[11px] leading-snug text-[#f7e8d0]/90 mb-2.5">
-                  {isPlaying ? "Playing 45s loop of YouTube Track" : "Tap to start wedding background music"}
+                  {isPlaying ? "Playing background music" : "Tap to start wedding background music"}
                 </p>
                 <a
                   href={invite.musicUrl}
