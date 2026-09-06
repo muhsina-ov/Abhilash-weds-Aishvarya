@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- *  CLIENT CONFIG — Abhilash Vivek & Aishvarya Wedding
+ *  CLIENT CONFIG — Abhilash Vivek & Aishvarya Nair Wedding
  * ═══════════════════════════════════════════════════════════════
  */
 
@@ -17,14 +17,12 @@ export interface WeddingEvent {
 
 export const invite = {
   // ── Couple ──────────────────────────────────────────────
-  brideFirst: "Aishvarya",
+  brideFirst: "Aishvarya Nair",
   groomFirst: "Abhilash Vivek",
-  brideShort: "Aishvarya",
-  groomShort: "Abhilash",
+  brideShort: "Aishvarya Nair",
+  groomShort: "Abhilash Vivek",
   monogram: "A · A",
   hashtag: "#AbhilashWedsAishvarya",
-  greetingTelugu: "శుభ వివాహం",
-  greetingEnglish: "Shubha Vivaham",
   weddingDateFormatted: "01 · 11 · 2026",
 
   // ── Families ────────────────────────────────────────────
@@ -71,12 +69,6 @@ export const invite = {
 
   // ── RSVP ────────────────────────────────────────────────
   whatsappPhone: "919876543210",
-
-  // ── Photos ──────────────────────────────────────────────
-  couplePhotos: [
-    "/assets/abhilash-aishvarya-1.jpg",
-    "/assets/abhilash-aishvarya-2.jpg",
-  ],
 
   // ── Footer ──────────────────────────────────────────────
   footerBlessing: "Two hearts, two souls, one eternal journey of love",

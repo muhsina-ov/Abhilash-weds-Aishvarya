@@ -52,49 +52,47 @@ export default function Hero() {
       />
 
       {/* Centre content */}
-      <div className="relative z-30 flex flex-1 flex-col items-center justify-center px-6 pb-14 pt-2 text-center">
-        <motion.p variants={rise} initial="hidden" animate="show" custom={0.15}
-          className="font-caps text-[11px] sm:text-sm text-[hsl(var(--sindoor))] tracking-widest font-semibold">
-          {invite.greetingTelugu} · {invite.greetingEnglish}
-        </motion.p>
-
-        <motion.div variants={rise} initial="hidden" animate="show" custom={0.35} className="mt-2 pt-3 pb-1 overflow-visible">
-          <h1 className="font-script text-6xl sm:text-8xl leading-snug text-gradient-sindoor animate-shimmer px-3">
+      <div className="relative z-30 flex flex-1 flex-col items-center justify-center px-6 pb-14 pt-4 text-center">
+        {/* Bride Name */}
+        <motion.div variants={rise} initial="hidden" animate="show" custom={0.25} className="pt-2 pb-1 overflow-visible">
+          <h1 className="font-script text-5xl sm:text-7xl leading-snug text-gradient-sindoor animate-shimmer px-3">
             {invite.brideFirst}
           </h1>
         </motion.div>
 
-        <motion.div variants={rise} initial="hidden" animate="show" custom={0.5}
+        {/* Weds Divider */}
+        <motion.div variants={rise} initial="hidden" animate="show" custom={0.4}
           className="ornament-divider my-1">
           <span className="font-script text-3xl sm:text-4xl text-gradient-gold px-2 py-1 leading-snug">weds</span>
         </motion.div>
 
-        <motion.div variants={rise} initial="hidden" animate="show" custom={0.65} className="pt-2 pb-1 overflow-visible">
+        {/* Groom Name */}
+        <motion.div variants={rise} initial="hidden" animate="show" custom={0.55} className="pt-2 pb-1 overflow-visible">
           <h1 className="font-script text-5xl sm:text-7xl leading-snug text-gradient-sindoor animate-shimmer px-3">
             {invite.groomFirst}
           </h1>
         </motion.div>
 
-        <motion.p variants={rise} initial="hidden" animate="show" custom={0.85}
+        {/* Wedding Date */}
+        <motion.p variants={rise} initial="hidden" animate="show" custom={0.75}
           className="mt-4 font-caps text-sm sm:text-lg text-[hsl(var(--foreground))] tracking-[0.35em] font-semibold">
           {invite.weddingDateFormatted}
         </motion.p>
 
-        {/* Hero Artwork / Caricature / Couple Frame */}
+        {/* Royal Monogram Mandala Badge (No photographs) */}
         <motion.div
-          variants={rise} initial="hidden" animate="show" custom={1.05}
-          className="animate-float mt-5 relative flex items-center justify-center"
+          variants={rise} initial="hidden" animate="show" custom={0.95}
+          className="animate-float mt-6 relative flex items-center justify-center"
         >
-          <div className="relative h-44 w-44 sm:h-52 sm:w-52 rounded-full p-2 bg-gradient-to-tr from-[#f7d784] via-[#d99a2b] to-[#a86f14] shadow-[0_15px_35px_rgba(143,29,58,0.3)]">
-            <div className="h-full w-full rounded-full overflow-hidden border-2 border-white/80">
-              <img
-                src={invite.couplePhotos[0]}
-                alt={`${invite.brideFirst} & ${invite.groomFirst}`}
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
-            <div className="absolute -bottom-2 inset-x-0 mx-auto w-max rounded-full bg-[#8f1d3a] px-4 py-1 text-[10px] font-caps text-[#f7d784] border border-[#f7d784]/40 shadow-md">
-              Save The Date
+          <div className="relative h-36 w-36 sm:h-44 sm:w-44 rounded-full p-2 bg-gradient-to-tr from-[#f7d784] via-[#d99a2b] to-[#a86f14] shadow-[0_15px_35px_rgba(143,29,58,0.3)] flex items-center justify-center">
+            <div className="h-full w-full rounded-full border-2 border-white/80 flex flex-col items-center justify-center bg-gradient-to-b from-[#8f1d3a] to-[#57102a] text-[#f7d784] p-3 shadow-inner">
+              <span className="text-xs text-[#f7d784]/70 mb-0.5">✦</span>
+              <span className="font-script text-3xl sm:text-4xl leading-none text-gradient-gold">
+                {invite.monogram}
+              </span>
+              <span className="mt-1 font-caps text-[9px] text-[#f7d784]/80 tracking-widest">
+                Save The Date
+              </span>
             </div>
           </div>
         </motion.div>

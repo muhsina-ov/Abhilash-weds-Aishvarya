@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import Hero from "@/sections/Hero";
 import Invitation from "@/sections/Invitation";
-import CoupleSpotlight from "@/sections/CoupleSpotlight";
 import CountdownSection from "@/sections/CountdownSection";
 import Events from "@/sections/Events";
 import Venue from "@/sections/Venue";
@@ -31,7 +30,6 @@ export default function App() {
       <AudioPlayer />
       <Hero />
       <Invitation />
-      <CoupleSpotlight />
       <CountdownSection />
       <Events />
       <Venue />
