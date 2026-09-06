@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music, Volume2, VolumeX, ExternalLink, RefreshCw } from "lucide-react";
+import { Music, Volume2, ExternalLink, RefreshCw } from "lucide-react";
 import { invite } from "@/config";
 
 declare global {
@@ -12,9 +12,7 @@ declare global {
 
 export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [playerReady, setPlayerReady] = useState(false);
   const playerRef = useRef<any>(null);
   const checkIntervalRef = useRef<any>(null);
 
@@ -49,7 +47,6 @@ export default function AudioPlayer() {
         },
         events: {
           onReady: (event: any) => {
-            setPlayerReady(true);
             try {
               event.target.playVideo();
               setIsPlaying(true);
@@ -96,7 +93,6 @@ export default function AudioPlayer() {
           playerRef.current.unMute();
           playerRef.current.playVideo();
           setIsPlaying(true);
-          setIsMuted(false);
         } catch (err) {
           console.warn("Interaction play error:", err);
         }
@@ -124,7 +120,6 @@ export default function AudioPlayer() {
       playerRef.current.unMute();
       playerRef.current.playVideo();
       setIsPlaying(true);
-      setIsMuted(false);
     }
   };
 

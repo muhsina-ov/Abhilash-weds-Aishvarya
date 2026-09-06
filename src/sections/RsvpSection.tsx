@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MessageSquare, CheckCircle2, User, Users, HeartHandshake, Sparkles } from "lucide-react";
-import { invite } from "@/config";
 
 export default function RsvpSection() {
   const [name, setName] = useState("");

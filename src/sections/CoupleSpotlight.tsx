@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { invite } from "@/config";
 
 export default function CoupleSpotlight() {
